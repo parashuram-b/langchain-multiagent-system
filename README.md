@@ -37,7 +37,7 @@ Folder: task1_multi_agent/
 - Ollama
 
 
-## Enhancements (Assessment Version)
+## Enhancements
 - Multi-document knowledge ingestion using DirectoryLoader
 - FAISS-based vector store for retrieval
 - Tool integration (calculator) for computation queries
