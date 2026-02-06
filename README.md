@@ -37,13 +37,31 @@ Folder: task1_multi_agent/
 - Ollama
 
 
-## Enhancements
-- Multi-document knowledge ingestion using DirectoryLoader
-- FAISS-based vector store for retrieval
-- Tool integration (calculator) for computation queries
-- Intelligent query routing (tool vs retrieval)
-- Modular design for future LangGraph-based agent orchestration
+## Architecture Flow
+User Query  
+→ Intent Routing  
+→ Tool Execution (Calculator) **OR** Knowledge Retrieval (FAISS)  
+→ LLM Response (Ollama)  
+→ Conversation Memory Update
 
+## Enhancements 
+- Multi-document knowledge ingestion using DirectoryLoader
+- FAISS-based vector store for efficient retrieval
+- Tool integration (calculator) for computation-based queries
+- Intelligent query routing (tool vs retrieval)
+- Modular architecture for future LangGraph-based agent orchestration
+
+## Sample Queries
+- What is LangChain?
+- Explain LangGraph
+- What does this chatbot support?
+- Calculate 25 * 4
+
+## Future Scope
+- Persistent memory using databases (Redis / SQLite)
+- Full LangGraph-based orchestration of the chatbot
+- Web UI using Streamlit or Gradio
+- Deployment on cloud platforms
 
 ## Author
 B Parashuram
