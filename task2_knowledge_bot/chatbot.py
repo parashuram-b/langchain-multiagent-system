@@ -4,6 +4,13 @@ from langchain.chains import ConversationalRetrievalChain
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.tools import Tool
+import logging
+logging.basicConfig(
+    filename="chatbot.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(message)s"
+)
+
 
 def calculator(expr: str):
     try:
@@ -41,14 +48,20 @@ print("🤖 Knowledge Bot ready. Type 'exit' to quit.")
 
 while True:
     q = input("You: ")
+
     if q.lower() == "exit":
+        print("Bot: Bye 👋")
         break
 
     tool_keywords = ["calculate", "add", "subtract", "multiply", "divide", "+", "-", "*", "/"]
 
-    if any(k in q.lower() for k in tool_keywords):
-        print("Bot (tool):", calculator(q))
-    else:
-        result = qa({"question": q})
-        print("Bot:", result["answer"])
+    try:
+        if any(k in q.lower() for k in tool_keywords):
+            answer = calculator(q)
+            print("Bot (tool):", answer)
+        else:
+            result = qa.invoke({"question": q})
+            print("Bot:", result["answer"])
 
+    except Exception as e:
+        print("Bot: Sorry, something went wrong.")
