@@ -1,0 +1,3 @@
+LangChain is a framework for building applications using large language models.
+It enables retrieval augmented generation, memory, and tool usage.
+LangGraph is a framework used to design multi-agent workflows.
