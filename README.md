@@ -29,8 +29,6 @@ A LangGraph-based multi-agent workflow.
 
 Folder: task1_multi_agent/
 
----
-
 ## Technologies
 - Python
 - LangChain
@@ -38,7 +36,14 @@ Folder: task1_multi_agent/
 - FAISS
 - Ollama
 
----
+
+## Enhancements (Assessment Version)
+- Multi-document knowledge ingestion using DirectoryLoader
+- FAISS-based vector store for retrieval
+- Tool integration (calculator) for computation queries
+- Intelligent query routing (tool vs retrieval)
+- Modular design for future LangGraph-based agent orchestration
+
 
 ## Author
 B Parashuram

@@ -3,6 +3,19 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import OllamaEmbeddings
+from langchain.tools import Tool
+
+def calculator(expr: str):
+    try:
+        return str(eval(expr))
+    except:
+        return "Invalid calculation"
+
+calc_tool = Tool(
+    name="Calculator",
+    func=calculator,
+    description="Performs mathematical calculations"
+)
 
 llm = Ollama(model="llama2")
 
@@ -30,5 +43,12 @@ while True:
     q = input("You: ")
     if q.lower() == "exit":
         break
-    result = qa({"question": q})
-    print("Bot:", result["answer"])
+
+    tool_keywords = ["calculate", "add", "subtract", "multiply", "divide", "+", "-", "*", "/"]
+
+    if any(k in q.lower() for k in tool_keywords):
+        print("Bot (tool):", calculator(q))
+    else:
+        result = qa({"question": q})
+        print("Bot:", result["answer"])
+
